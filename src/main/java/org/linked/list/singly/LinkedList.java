@@ -29,19 +29,11 @@ public class LinkedList<T> {
     }
 
     private class Node {
-        T value;
-        Node next;
+        private T value;
+        private Node next;
 
         public Node(T content) {
             this.value = content;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
         }
 
         @Override
