@@ -28,6 +28,17 @@ public class LinkedList<T> {
         length++;
     }
 
+    public void insert(int index, T value) {
+        Node currentNode = this.head;
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = currentNode.next;
+        }
+        Node newNode = new Node(value);
+        newNode.next = currentNode.next;
+        currentNode.next = newNode;
+        this.length++;
+    }
+
     private class Node {
         private T value;
         private Node next;
