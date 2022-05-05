@@ -28,7 +28,15 @@ public class LinkedList<T> {
         length++;
     }
 
-    public void insert(int index, T value) {
+    public void insert(long index, T value) {
+        if (index == 0) {
+            prepend(value);
+            return;
+        }
+        if (index >= this.length) {
+            append(value);
+            return;
+        }
         Node currentNode = this.head;
         for (int i = 0; i < index - 1; i++) {
             currentNode = currentNode.next;
@@ -37,6 +45,23 @@ public class LinkedList<T> {
         newNode.next = currentNode.next;
         currentNode.next = newNode;
         this.length++;
+    }
+
+    public void remove(long index) {
+        if (index > this.length)
+            index = this.length;
+
+        if(index == 0) {
+            this.head = this.head.next;
+            this.length--;
+            return;
+        }
+        Node currentNode = this.head;
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = currentNode.next.next;
+        this.length--;
     }
 
     private class Node {
